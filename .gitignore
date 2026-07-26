@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# Build and local output
+outputs/
+build/
+dist/
+*.egg-info/
+.DS_Store
+~$*.docx
+~$*.xlsx
+
+# Secrets and authentication
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*.json
+service-account*.json
+cookies*.json
+cookies*.sqlite
+browser-data/
+
+# Private customer material
+private-data/
+customer-data/
+real-customer-data/
+客户资料/
+真实客户数据/
+客户背景调查提示词.docx
+
+# IDE
+.idea/
+.vscode/
