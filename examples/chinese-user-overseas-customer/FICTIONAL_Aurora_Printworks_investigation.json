@@ -1,0 +1,515 @@
+{
+  "investigation_date": "2026-07-26",
+  "report_language": "zh-CN",
+  "mode": "full",
+  "fictional_notice": "FICTIONAL EXAMPLE — NOT A REAL COMPANY",
+  "customer": {
+    "legal_name": "FICTIONAL Aurora Printworks Sp. z o.o.",
+    "trading_name": "FICTIONAL Aurora Print",
+    "original_name": "FICTIONAL Aurora Printworks Sp. z o.o.",
+    "english_name": "FICTIONAL Aurora Printworks",
+    "chinese_name": "虚构极光印刷有限公司",
+    "brand": "FICTIONAL Aurora",
+    "country_code": "PL",
+    "country_name": "Poland",
+    "registration_number": "FICTIONAL-PL-000001",
+    "tax_id": "FICTIONAL-TAX-000001",
+    "website": "https://aurora-print.example",
+    "address": "1 Fictional Avenue, Example City, Poland",
+    "original_address": "1 Fictional Avenue, Example City, Polska",
+    "contact": {
+      "name": "Maya Example",
+      "original_name": "Maya Example",
+      "job_title": "Purchasing Manager",
+      "phone": "+999 000 000 001",
+      "email": "maya.example@aurora-print.example",
+      "social_profile": ""
+    }
+  },
+  "verification": {
+    "legal_entity_status": "confirmed",
+    "business_registry_confirmed": true,
+    "registration_status": "已确认（虚构测试）",
+    "website_status": "confirmed",
+    "email_domain_match": true,
+    "phone_verified": true,
+    "address_verified": true,
+    "contact_verified": true,
+    "information_consistent": true,
+    "cross_verified": true,
+    "authenticity_doubtful": false,
+    "generic_company_name": false,
+    "personal_contact_only": false,
+    "insufficient_normal_scoring": false,
+    "conflicts": [],
+    "findings": [
+      "主体信息来自完全虚构的公开来源示例。"
+    ]
+  },
+  "business_analysis": {
+    "customer_type": "印刷/包装生产商",
+    "main_business": "纸盒印刷与包装",
+    "business_model": "B2B直销（虚构示例）",
+    "competition_environment": "未找到可靠公开信息",
+    "evidence_status": "confirmed"
+  },
+  "production_and_process": {
+    "printing_processes": [
+      "UV胶印"
+    ],
+    "application_scenarios": [
+      "纸盒包装"
+    ],
+    "equipment_models": [
+      "FICTIONAL FP-740 — FICTIONAL TEST MODEL"
+    ],
+    "equipment_note": "设备型号仅用于虚构测试。",
+    "evidence_status": "partially_confirmed"
+  },
+  "supplier_and_import_records": {
+    "cooperation_brands": [],
+    "current_suppliers": [],
+    "supplier_countries": [],
+    "import_records": [],
+    "summary": "未找到公开可靠记录。",
+    "evidence_status": "not_found"
+  },
+  "sales_channels": {
+    "channels": [
+      "B2B直销"
+    ],
+    "market_scope": [],
+    "summary": "公开范围有限，需客户确认。",
+    "evidence_status": "partially_confirmed"
+  },
+  "company_scale": {
+    "revenue": "未找到可靠公开信息。",
+    "employee_count": "未找到可靠公开信息。",
+    "capacity": "未找到可靠公开信息。",
+    "operating_status": "主体状态已确认，当前经营规模无法确认",
+    "summary": "未找到可靠的规模数据。",
+    "evidence_status": "not_found"
+  },
+  "investigation_items": [
+    {
+      "number": 1,
+      "item": "公司主体与联系人真实性",
+      "core_finding": "工商示例、官网与地图信息一致；联系人有业务往来记录。",
+      "evidence_status": "confirmed",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "needs_customer_confirmation": false
+    },
+    {
+      "number": 2,
+      "item": "主营业务、客户类型与竞争环境",
+      "core_finding": "纸盒印刷生产商，主营高端短单包装。",
+      "evidence_status": "confirmed",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "needs_customer_confirmation": false
+    },
+    {
+      "number": 3,
+      "item": "生产设备、印刷工艺与应用场景",
+      "core_finding": "官网示例显示单张纸UV胶印；设备型号为虚构测试信息。",
+      "evidence_status": "partially_confirmed",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "needs_customer_confirmation": true
+    },
+    {
+      "number": 4,
+      "item": "现有供应商、合作品牌与进口记录",
+      "core_finding": "未找到公开可靠的现用品牌、供应商或进口记录。",
+      "evidence_status": "not_found",
+      "source_ids": [],
+      "needs_customer_confirmation": true
+    },
+    {
+      "number": 5,
+      "item": "销售渠道与市场范围",
+      "core_finding": "官网示例显示直销本地品牌客户；范围需确认。",
+      "evidence_status": "partially_confirmed",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "needs_customer_confirmation": true
+    },
+    {
+      "number": 6,
+      "item": "公司规模、产能与经营状态",
+      "core_finding": "未找到可靠的营收、员工人数或产能信息。",
+      "evidence_status": "not_found",
+      "source_ids": [],
+      "needs_customer_confirmation": true
+    },
+    {
+      "number": 7,
+      "item": "产品匹配与推荐产品",
+      "core_finding": "UV油墨和橡皮布与已确认工艺匹配。",
+      "evidence_status": "confirmed",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "needs_customer_confirmation": false
+    },
+    {
+      "number": 8,
+      "item": "采购信号、采购频率与跟进时间",
+      "core_finding": "已明确询价并要求寄送测试样品。",
+      "evidence_status": "confirmed",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "needs_customer_confirmation": false
+    },
+    {
+      "number": 9,
+      "item": "采购痛点、风险与切入方案",
+      "core_finding": "最大不确定性是付款条款；先确认测试参数。",
+      "evidence_status": "partially_confirmed",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "needs_customer_confirmation": true
+    }
+  ],
+  "product_recommendations": [
+    {
+      "customer_product_or_equipment": "纸盒/虚构FP-740设备",
+      "printing_process": "UV胶印",
+      "specific_need": "纸张与覆膜纸盒的附着、固化和耐磨",
+      "recommended_product": "UV油墨",
+      "reason": "与公开展示的UV胶印应用直接匹配",
+      "parameters_to_confirm": [
+        "灯型与波长",
+        "承印物",
+        "色组",
+        "固化速度"
+      ],
+      "evidence_status": "partially_confirmed"
+    },
+    {
+      "customer_product_or_equipment": "纸盒/虚构FP-740设备",
+      "printing_process": "UV胶印",
+      "specific_need": "稳定转印与周期性更换",
+      "recommended_product": "UV兼容橡皮布",
+      "reason": "橡皮布属于与设备尺寸直接相关的维护耗材",
+      "parameters_to_confirm": [
+        "滚筒尺寸",
+        "厚度",
+        "背衬",
+        "当前品牌"
+      ],
+      "evidence_status": "partially_confirmed"
+    }
+  ],
+  "purchase_signals": [
+    {
+      "signal_type": "明确询价",
+      "detail": "询问两类耗材价格与交期。",
+      "explicit": true,
+      "evidence_status": "confirmed",
+      "source_ids": [
+        "S4"
+      ]
+    },
+    {
+      "signal_type": "索样测试",
+      "detail": "要求安排样品测试。",
+      "explicit": true,
+      "evidence_status": "confirmed",
+      "source_ids": [
+        "S4"
+      ]
+    }
+  ],
+  "follow_up_questions": [
+    {
+      "priority": 1,
+      "question": "请提供完整注册主体和注册编号。",
+      "reason": "核验签约与付款主体。",
+      "customer_answer": "",
+      "subsequent_action": "核验后更新真实性评分。"
+    },
+    {
+      "priority": 2,
+      "question": "请提供印刷设备品牌、型号和工艺。",
+      "reason": "决定产品和测试参数。",
+      "customer_answer": "",
+      "subsequent_action": "生成定向产品方案。"
+    },
+    {
+      "priority": 3,
+      "question": "请说明数量、采购时间和现用品牌。",
+      "reason": "判断真实采购潜力。",
+      "customer_answer": "",
+      "subsequent_action": "决定报价或低成本跟进。"
+    }
+  ],
+  "risks": [
+    {
+      "category": "payment",
+      "risk": "付款条款尚未核实",
+      "deduction": -2,
+      "evidence_status": "partially_confirmed",
+      "mitigation": "要求客户提供主体、付款和采购参数证明。",
+      "source_ids": [
+        "S1"
+      ]
+    }
+  ],
+  "scoring": {
+    "authenticity": {
+      "name": "客户真实性",
+      "max_score": 20,
+      "items": [
+        {
+          "name": "Business registry",
+          "max_score": 6,
+          "score": 6,
+          "rationale": "依据虚构测试证据逐项评分：Business registry",
+          "evidence_status": "partially_confirmed"
+        },
+        {
+          "name": "Website and email",
+          "max_score": 4,
+          "score": 4,
+          "rationale": "依据虚构测试证据逐项评分：Website and email",
+          "evidence_status": "partially_confirmed"
+        },
+        {
+          "name": "Phone and address",
+          "max_score": 4,
+          "score": 4,
+          "rationale": "依据虚构测试证据逐项评分：Phone and address",
+          "evidence_status": "partially_confirmed"
+        },
+        {
+          "name": "Contact authenticity",
+          "max_score": 3,
+          "score": 3,
+          "rationale": "依据虚构测试证据逐项评分：Contact authenticity",
+          "evidence_status": "partially_confirmed"
+        },
+        {
+          "name": "Information consistency",
+          "max_score": 3,
+          "score": 3,
+          "rationale": "依据虚构测试证据逐项评分：Information consistency",
+          "evidence_status": "partially_confirmed"
+        }
+      ]
+    },
+    "business_fit": {
+      "name": "业务匹配度",
+      "max_score": 25,
+      "items": [
+        {
+          "name": "Direct industry relevance",
+          "max_score": 10,
+          "score": 10,
+          "rationale": "依据虚构测试证据逐项评分：Direct industry relevance",
+          "evidence_status": "partially_confirmed"
+        },
+        {
+          "name": "Process and application fit",
+          "max_score": 8,
+          "score": 8,
+          "rationale": "依据虚构测试证据逐项评分：Process and application fit",
+          "evidence_status": "partially_confirmed"
+        },
+        {
+          "name": "Product entry feasibility",
+          "max_score": 7,
+          "score": 7,
+          "rationale": "依据虚构测试证据逐项评分：Product entry feasibility",
+          "evidence_status": "partially_confirmed"
+        }
+      ]
+    },
+    "purchase_signal": {
+      "name": "采购信号",
+      "max_score": 25,
+      "items": [
+        {
+          "name": "Explicit inquiry or demand",
+          "max_score": 10,
+          "score": 10,
+          "rationale": "依据虚构测试证据逐项评分：Explicit inquiry or demand",
+          "evidence_status": "partially_confirmed"
+        },
+        {
+          "name": "Sample, test, or quotation",
+          "max_score": 7,
+          "score": 7,
+          "rationale": "依据虚构测试证据逐项评分：Sample, test, or quotation",
+          "evidence_status": "partially_confirmed"
+        },
+        {
+          "name": "Parameters, quantity, or timing",
+          "max_score": 5,
+          "score": 5,
+          "rationale": "依据虚构测试证据逐项评分：Parameters, quantity, or timing",
+          "evidence_status": "partially_confirmed"
+        },
+        {
+          "name": "Ongoing communication or reply",
+          "max_score": 3,
+          "score": 3,
+          "rationale": "依据虚构测试证据逐项评分：Ongoing communication or reply",
+          "evidence_status": "partially_confirmed"
+        }
+      ]
+    },
+    "purchase_potential": {
+      "name": "采购潜力",
+      "max_score": 15,
+      "items": [
+        {
+          "name": "Consumption frequency",
+          "max_score": 5,
+          "score": 5,
+          "rationale": "依据虚构测试证据逐项评分：Consumption frequency",
+          "evidence_status": "partially_confirmed"
+        },
+        {
+          "name": "Production or channel scale",
+          "max_score": 5,
+          "score": 4,
+          "rationale": "依据虚构测试证据逐项评分：Production or channel scale",
+          "evidence_status": "partially_confirmed"
+        },
+        {
+          "name": "Repeat purchase likelihood",
+          "max_score": 3,
+          "score": 3,
+          "rationale": "依据虚构测试证据逐项评分：Repeat purchase likelihood",
+          "evidence_status": "partially_confirmed"
+        },
+        {
+          "name": "Alternative supply opportunity",
+          "max_score": 2,
+          "score": 2,
+          "rationale": "依据虚构测试证据逐项评分：Alternative supply opportunity",
+          "evidence_status": "partially_confirmed"
+        }
+      ]
+    },
+    "contact_execution": {
+      "name": "联系可执行性",
+      "max_score": 15,
+      "items": [
+        {
+          "name": "Valid contact method",
+          "max_score": 5,
+          "score": 5,
+          "rationale": "依据虚构测试证据逐项评分：Valid contact method",
+          "evidence_status": "partially_confirmed"
+        },
+        {
+          "name": "Relevant contact role",
+          "max_score": 4,
+          "score": 4,
+          "rationale": "依据虚构测试证据逐项评分：Relevant contact role",
+          "evidence_status": "partially_confirmed"
+        },
+        {
+          "name": "Reply status",
+          "max_score": 3,
+          "score": 3,
+          "rationale": "依据虚构测试证据逐项评分：Reply status",
+          "evidence_status": "partially_confirmed"
+        },
+        {
+          "name": "Clear next step",
+          "max_score": 3,
+          "score": 3,
+          "rationale": "依据虚构测试证据逐项评分：Clear next step",
+          "evidence_status": "partially_confirmed"
+        }
+      ]
+    },
+    "risk_deduction": {
+      "name": "风险扣分",
+      "items": [
+        {
+          "name": "付款条款未确认",
+          "score": -2,
+          "rationale": "按虚构案例中的已知风险扣分。",
+          "evidence_status": "partially_confirmed"
+        }
+      ]
+    },
+    "total_score": 97,
+    "final_grade": "A"
+  },
+  "conclusion": "【已确认】客户主体真实，主营纸盒UV胶印，公开信息基本一致。首推UV油墨、UV兼容橡皮布，对应纸盒UV胶印与设备维护场景。综合得分97分，最终等级A，值得优先主动开发。最优先行动是先确认设备、承印物和测试规格后发送一份定向样品方案。最大不确定性为付款条款尚未核实。",
+  "development_value": "值得继续核实",
+  "first_contact_focus": "确认设备型号、承印物、现用规格与采购时间。",
+  "evidence_gaps": [
+    "设备型号",
+    "现用品牌",
+    "数量与采购时间"
+  ],
+  "priority_action": "先确认设备、承印物和测试规格后发送一份定向样品方案。",
+  "not_recommended_action": "在参数和主体核实前不寄大批样品。",
+  "maximum_risk": "付款条款尚未核实",
+  "sources": [
+    {
+      "source_id": "S1",
+      "page_title": "虚构官方工商记录",
+      "url": "https://registry.example/fictional-a",
+      "source_type": "官方工商示例",
+      "access_date": "2026-07-26",
+      "supports": "主体状态（仅虚构测试）",
+      "credibility": "high",
+      "information_year": 2026,
+      "is_core": true
+    },
+    {
+      "source_id": "S2",
+      "page_title": "虚构公司业务页面",
+      "url": "https://company.example/fictional-a/business",
+      "source_type": "公司官网示例",
+      "access_date": "2026-07-26",
+      "supports": "对外宣传业务与工艺",
+      "credibility": "medium",
+      "information_year": 2026,
+      "is_core": true
+    },
+    {
+      "source_id": "S3",
+      "page_title": "虚构地图记录",
+      "url": "https://maps.example/fictional-a",
+      "source_type": "地图示例",
+      "access_date": "2026-07-26",
+      "supports": "地址与电话交叉验证",
+      "credibility": "medium",
+      "information_year": 2026,
+      "is_core": true
+    },
+    {
+      "source_id": "S4",
+      "page_title": "虚构展会目录",
+      "url": "https://exhibition.example/fictional-a",
+      "source_type": "展会示例",
+      "access_date": "2026-07-26",
+      "supports": "业务类型与联系人线索",
+      "credibility": "medium",
+      "information_year": 2025,
+      "is_core": true
+    }
+  ]
+}

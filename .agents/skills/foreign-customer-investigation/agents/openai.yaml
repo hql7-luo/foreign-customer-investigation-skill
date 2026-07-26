@@ -1,0 +1,4 @@
+interface:
+  display_name: "Foreign Customer Investigation"
+  short_description: "Verify buyers, score opportunity, and generate reports"
+  default_prompt: "Use $foreign-customer-investigation to investigate this customer and generate consistent Word, Excel, and JSON outputs."
