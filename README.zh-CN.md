@@ -1,5 +1,7 @@
 # 客户背景调查 Agent Skill
 
+[![Validation](https://github.com/hql7-luo/foreign-customer-investigation-skill/actions/workflows/validation.yml/badge.svg)](https://github.com/hql7-luo/foreign-customer-investigation-skill/actions/workflows/validation.yml)
+
 [English README](README.md)
 
 `foreign-customer-investigation` 是一个可复用的 Agent Skill，用于基于公开证据开展 B2B 客户背景调查、印刷行业产品匹配、采购潜力评分和开发优先级排序。
@@ -100,7 +102,7 @@ git clone https://github.com/hql7-luo/foreign-customer-investigation-skill.git
 cd foreign-customer-investigation-skill
 python3 -m venv .venv
 source .venv/bin/activate
-python -m pip install -r requirements.txt
+python -m pip install --require-hashes -r requirements-lock.txt
 ```
 
 Windows PowerShell：
@@ -108,8 +110,10 @@ Windows PowerShell：
 ```powershell
 py -3.11 -m venv .venv
 .\.venv\Scripts\Activate.ps1
-python -m pip install -r requirements.txt
+python -m pip install --require-hashes -r requirements-lock.txt
 ```
+
+CI 验证 Python 3.11 和 3.12。`requirements-lock.txt` 使用哈希锁定已测试的依赖快照，`requirements.txt` 保留支持的版本范围。计算字段序列化需要 Pydantic 2.12+。
 
 Skill 已放在：
 
@@ -453,6 +457,8 @@ ranking = rank_reports(reports)
 ```bash
 pytest -q
 ```
+
+调查文本在 Excel 中始终作为文本保存；只有生成器内置的评分与等级校验使用公式。隐私检查覆盖待发布文件，并排除已忽略的本地虚拟环境与报告输出。
 
 测试覆盖 A/B/C/D、简化模式、等级限制、评分上下限、风险扣分、Word/Excel/JSON 生成、Excel 公式、三种输出一致性、批量无并列排名、推荐数量限制、中文/英文/混合输入、中国/海外客户和非拉丁字符。
 

@@ -77,6 +77,18 @@ SHEET_NAMES = {
 }
 
 
+def _append_literal_row(sheet: Worksheet, values: Iterable[object]) -> None:
+    """Keep research text literal; only the scoring builder may create formulas."""
+
+    row_values = list(values)
+    sheet.append(row_values)
+    for column, value in enumerate(row_values, start=1):
+        if isinstance(value, str):
+            # openpyxl infers formulas/errors from strings such as =1+1 or #N/A.
+            # Explicit string cells preserve the original text without executing it.
+            sheet.cell(sheet.max_row, column).data_type = "s"
+
+
 def _headers(language: ReportLanguage, zh: list[str], en: list[str]) -> list[str]:
     return [localized(language, left, right) for left, right in zip(zh, en, strict=True)]
 
@@ -146,7 +158,7 @@ def _add_grade_formatting(sheet: Worksheet, cell_range: str) -> None:
 
 def _overview_sheet(sheet: Worksheet, report: InvestigationReport) -> None:
     language = report.report_language
-    sheet.append(_headers(language, ["字段", "内容"], ["Field", "Value"]))
+    _append_literal_row(sheet, _headers(language, ["字段", "内容"], ["Field", "Value"]))
     rows: list[tuple[str, object]] = [
         (
             localized(language, "示例声明", "Example notice"),
@@ -172,7 +184,7 @@ def _overview_sheet(sheet: Worksheet, report: InvestigationReport) -> None:
         (localized(language, "调查日期", "Investigation date"), report.investigation_date),
     ]
     for label, value in rows:
-        sheet.append([label, value])
+        _append_literal_row(sheet, [label, value])
     for cell in sheet["A"][1:]:
         cell.fill = PatternFill("solid", fgColor=VERY_LIGHT_BLUE)
         cell.font = Font(name="Calibri", size=9, bold=True, color=NAVY)
@@ -191,9 +203,10 @@ def _investigation_sheet(sheet: Worksheet, report: InvestigationReport) -> None:
         ["序号", "调查项目", "核心发现", "证据状态", "信息来源", "是否需要客户确认"],
         ["No.", "Investigation item", "Core finding", "Evidence status", "Sources", "Customer confirmation needed"],
     )
-    sheet.append(headers)
+    _append_literal_row(sheet, headers)
     for item in sorted(report.investigation_items, key=lambda value: value.number):
-        sheet.append(
+        _append_literal_row(
+            sheet,
             [
                 item.number,
                 item.item,
@@ -213,7 +226,8 @@ def _investigation_sheet(sheet: Worksheet, report: InvestigationReport) -> None:
 
 def _scoring_sheet(sheet: Worksheet, report: InvestigationReport) -> None:
     language = report.report_language
-    sheet.append(
+    _append_literal_row(
+        sheet,
         _headers(
             language,
             ["评分维度", "评分项目", "满分", "实际得分", "评分依据", "证据状态"],
@@ -229,7 +243,8 @@ def _scoring_sheet(sheet: Worksheet, report: InvestigationReport) -> None:
     ]
     for dimension in dimensions:
         for item in dimension.items:
-            sheet.append(
+            _append_literal_row(
+                sheet,
                 [
                     dimension.name,
                     item.name,
@@ -240,7 +255,8 @@ def _scoring_sheet(sheet: Worksheet, report: InvestigationReport) -> None:
                 ]
             )
     for item in report.scoring.risk_deduction.items:
-        sheet.append(
+        _append_literal_row(
+            sheet,
             [
                 report.scoring.risk_deduction.name,
                 item.name,
@@ -361,7 +377,8 @@ def _scoring_sheet(sheet: Worksheet, report: InvestigationReport) -> None:
 
 def _evidence_sheet(sheet: Worksheet, report: InvestigationReport) -> None:
     language = report.report_language
-    sheet.append(
+    _append_literal_row(
+        sheet,
         _headers(
             language,
             ["来源编号", "页面标题", "完整网址", "来源类型", "访问日期", "支持的结论", "可信度", "信息年份"],
@@ -369,7 +386,8 @@ def _evidence_sheet(sheet: Worksheet, report: InvestigationReport) -> None:
         )
     )
     for source in report.sources:
-        sheet.append(
+        _append_literal_row(
+            sheet,
             [
                 source.source_id,
                 source.page_title,
@@ -393,7 +411,8 @@ def _evidence_sheet(sheet: Worksheet, report: InvestigationReport) -> None:
 
 def _questions_sheet(sheet: Worksheet, report: InvestigationReport) -> None:
     language = report.report_language
-    sheet.append(
+    _append_literal_row(
+        sheet,
         _headers(
             language,
             ["优先级", "需要确认的问题", "确认原因", "客户回答", "后续动作"],
@@ -401,7 +420,8 @@ def _questions_sheet(sheet: Worksheet, report: InvestigationReport) -> None:
         )
     )
     for question in sorted(report.follow_up_questions, key=lambda value: value.priority):
-        sheet.append(
+        _append_literal_row(
+            sheet,
             [
                 question.priority,
                 question.question,
@@ -424,7 +444,8 @@ def _ranking_sheet(
     ranking: Iterable[RankingEntry],
 ) -> None:
     language = report.report_language
-    sheet.append(
+    _append_literal_row(
+        sheet,
         _headers(
             language,
             ["排名", "公司名称", "最终等级", "最终得分", "首推产品", "核心采购信号", "最大风险", "下一步动作"],
@@ -432,7 +453,8 @@ def _ranking_sheet(
         )
     )
     for entry in ranking:
-        sheet.append(
+        _append_literal_row(
+            sheet,
             [
                 entry.rank,
                 entry.company_name,
