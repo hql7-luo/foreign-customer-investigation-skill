@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+import subprocess
 from pathlib import Path
 
 from docx import Document
@@ -16,6 +17,31 @@ SECRET_PATTERNS = [
     re.compile(r"AKIA[0-9A-Z]{16}"),
     re.compile(r"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----"),
 ]
+
+
+def _public_files(root: Path) -> list[Path]:
+    """Audit publication content, including new source files, without local runtime data."""
+
+    if (root / ".git").exists():
+        result = subprocess.run(
+            ["git", "ls-files", "--cached", "--others", "--exclude-standard", "-z"],
+            cwd=root,
+            check=True,
+            capture_output=True,
+        )
+        candidates = [root / name for name in result.stdout.decode().split("\0") if name]
+    else:
+        # Exported archives have no Git index; scan the packaged source/example trees.
+        candidates = [path for path in root.iterdir() if path.is_file()]
+        for directory in (root / ".agents", root / "examples", root / "tests"):
+            candidates.extend(directory.rglob("*"))
+    return sorted({
+        path for path in candidates
+        if path.is_file() and "__pycache__" not in path.parts
+        and path.suffix.lower() in {
+            ".py", ".md", ".json", ".txt", ".toml", ".yaml", ".yml", ".docx", ".xlsx", ""
+        }
+    })
 
 
 def _artifact_text(path: Path) -> str:
@@ -40,14 +66,7 @@ def _artifact_text(path: Path) -> str:
 
 def test_public_repository_contains_only_fictional_contact_data():
     root = Path(__file__).resolve().parents[1]
-    files = [
-        path
-        for path in root.rglob("*")
-        if path.is_file()
-        and ".git" not in path.parts
-        and "__pycache__" not in path.parts
-        and path.suffix.lower() in {".py", ".md", ".json", ".txt", ".docx", ".xlsx", ""}
-    ]
+    files = _public_files(root)
     corpus = "\n".join(_artifact_text(path) for path in files)
 
     for pattern in SECRET_PATTERNS:
@@ -75,3 +94,31 @@ def test_every_binary_example_is_visibly_fictional():
     assert artifacts
     for artifact in artifacts:
         assert "FICTIONAL EXAMPLE — NOT A REAL COMPANY" in _artifact_text(artifact)
+
+
+def test_privacy_audit_scans_publication_files_but_ignores_local_environments(tmp_path):
+    subprocess.run(["git", "init", "--quiet", str(tmp_path)], check=True)
+    (tmp_path / ".gitignore").write_text(".venv/\noutputs/\n", encoding="utf-8")
+    tracked = tmp_path / "README.md"
+    tracked.write_text("FICTIONAL public report", encoding="utf-8")
+    subprocess.run(["git", "add", "README.md", ".gitignore"], cwd=tmp_path, check=True)
+    source = tmp_path / "new-source.py"
+    source.write_text("# Newly added publication source", encoding="utf-8")
+    for directory in (".venv", "outputs"):
+        (tmp_path / directory).mkdir()
+        (tmp_path / directory / "local.txt").write_text("Local material", encoding="utf-8")
+
+    public_files = _public_files(tmp_path)
+    assert tracked in public_files
+    assert source in public_files
+    assert not any(path.parent.name in {".venv", "outputs"} for path in public_files)
+
+
+def test_privacy_audit_supports_exported_source_archives(tmp_path):
+    (tmp_path / "README.md").write_text("FICTIONAL public report", encoding="utf-8")
+    (tmp_path / "examples").mkdir()
+    example = tmp_path / "examples" / "fictional.json"
+    example.write_text("{}", encoding="utf-8")
+    (tmp_path / ".venv").mkdir()
+    (tmp_path / ".venv" / "library.txt").write_text("Local dependency", encoding="utf-8")
+    assert _public_files(tmp_path) == [tmp_path / "README.md", example]

@@ -1,5 +1,7 @@
 # Foreign Customer Investigation Skill
 
+[![Validation](https://github.com/hql7-luo/foreign-customer-investigation-skill/actions/workflows/validation.yml/badge.svg)](https://github.com/hql7-luo/foreign-customer-investigation-skill/actions/workflows/validation.yml)
+
 [中文说明](README.zh-CN.md)
 
 `foreign-customer-investigation` is a reusable Agent Skill for evidence-based B2B customer investigation, printing-industry product-fit analysis, purchase-potential scoring, and development prioritization.
@@ -102,7 +104,7 @@ git clone https://github.com/hql7-luo/foreign-customer-investigation-skill.git
 cd foreign-customer-investigation-skill
 python3 -m venv .venv
 source .venv/bin/activate
-python -m pip install -r requirements.txt
+python -m pip install --require-hashes -r requirements-lock.txt
 ```
 
 On Windows PowerShell:
@@ -110,8 +112,10 @@ On Windows PowerShell:
 ```powershell
 py -3.11 -m venv .venv
 .\.venv\Scripts\Activate.ps1
-python -m pip install -r requirements.txt
+python -m pip install --require-hashes -r requirements-lock.txt
 ```
+
+Python 3.11 and 3.12 are validated in CI. `requirements-lock.txt` pins the tested dependency snapshot with hashes; `requirements.txt` records the supported ranges. Pydantic 2.12+ is required for computed-field serialization.
 
 The repository already stores the Skill at:
 
@@ -449,6 +453,8 @@ The `.gitignore` excludes common secret and private-customer paths. A repository
 ```bash
 pytest -q
 ```
+
+Research strings are written as literal Excel text; only the generator's scoring and grade checks become formulas. The privacy checks audit publication files and exclude ignored local environments and report outputs.
 
 Tests cover A/B/C/D cases, simplified-mode triggers, grade caps, score bounds, risk deductions, DOCX/XLSX/JSON generation, formulas, cross-output consistency, no-tie rankings, recommendation limits, Chinese/English/mixed input, China/overseas cases, and non-Latin characters.
 

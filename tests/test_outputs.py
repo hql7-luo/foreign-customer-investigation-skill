@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import pytest
 from docx import Document
 from openpyxl import load_workbook
 
@@ -109,3 +110,31 @@ def test_generated_templates_open():
     assert Document(templates / "report-template-en.docx")
     workbook = load_workbook(templates / "investigation-template.xlsx", data_only=False)
     assert len(workbook.sheetnames) == 6
+
+
+@pytest.mark.parametrize("language", list(ReportLanguage))
+def test_research_text_cannot_become_excel_formulas(report_a, tmp_path, language):
+    payload = report_a.model_dump(mode="json", exclude_computed_fields=True)
+    payload["report_language"] = language.value
+    formula_text = '=HYPERLINK("https://example.com","FICTIONAL fixture")'
+    payload["customer"]["legal_name"] = formula_text
+    payload["investigation_items"][0]["core_finding"] = formula_text
+    payload["scoring"]["authenticity"]["items"][0]["rationale"] = formula_text
+    payload["sources"][0]["page_title"] = formula_text
+    payload["follow_up_questions"][0]["question"] = formula_text
+    report = InvestigationReport.model_validate(payload)
+
+    workbook = load_workbook(generate_xlsx(report, tmp_path / "literal.xlsx"), data_only=False)
+    for sheet in workbook:
+        literal_cells = [
+            cell for row in sheet for cell in row if cell.value == formula_text
+        ]
+        assert literal_cells, sheet.title
+        assert all(cell.data_type == "s" for cell in literal_cells)
+
+    formulas = [
+        cell.value for row in workbook[SHEET_NAMES[language][2]] for cell in row
+        if cell.data_type == "f"
+    ]
+    assert any("SUM(" in formula for formula in formulas)
+    assert any("IF(" in formula for formula in formulas)
