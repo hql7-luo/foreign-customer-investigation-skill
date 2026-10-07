@@ -4,6 +4,31 @@
 
 [中文说明](README.zh-CN.md)
 
+**An agent-guided B2B research workflow that turns company clues into an evidence-backed customer grade, one priority action, and consistent Word / Excel / JSON reports.**
+
+**Business value:** make prospect qualification and product matching repeatable, while keeping missing evidence and transaction risks visible.
+
+**What I built:** research instructions, an auditable scoring model, grade safeguards, deterministic batch ranking, and validated report generators. **Skills:** Python · Pydantic · business rules · evidence analysis · workflow design · document automation.
+
+## From input to action
+
+![Company name, website, card or inquiry → evidence collection → company verification → type, fit, signals and risk → score, grade and priority action → DOCX, XLSX and JSON](docs/visuals/workflow-en.svg)
+
+Research follows the [implemented skill workflow](.agents/skills/foreign-customer-investigation/SKILL.md); Python validates and exports the result. This is a reusable Agent Skill, with report generators rather than a standalone web application.
+
+## One complete example result
+
+![Fictional Aurora report: 97 out of 100, grade A, customer type, purchase signals, matched products, payment uncertainty, next action and five actual scoring dimensions](docs/visuals/result-en.svg)
+
+**Fictional fixture, not a real customer outcome.** The card is generated from the existing Aurora example: **20 + 25 + 25 + 14 + 15 − 2 = 97**. Product match remains subject to parameter confirmation; a high score alone cannot bypass grade caps.
+
+Inspect the original [JSON](examples/chinese-user-overseas-customer/FICTIONAL_Aurora_Printworks_investigation.json), [Word report](examples/chinese-user-overseas-customer/FICTIONAL_Aurora_Printworks_客户背景调查报告.docx), or [Excel workbook](examples/chinese-user-overseas-customer/FICTIONAL_Aurora_Printworks_客户背景调查数据.xlsx). English narrative comes from the same existing fixture generator. [Visual sources and regeneration](docs/visuals/SOURCES.md).
+
+<details>
+<summary>Capabilities, setup, scoring rules and full reference</summary>
+
+## Coverage and boundaries
+
 `foreign-customer-investigation` is a reusable Agent Skill for evidence-based B2B customer investigation, printing-industry product-fit analysis, purchase-potential scoring, and development prioritization.
 
 It supports investigations in every direction:
@@ -461,3 +486,5 @@ Tests cover A/B/C/D cases, simplified-mode triggers, grade caps, score bounds, r
 ## License
 
 [MIT License](LICENSE)
+
+</details>

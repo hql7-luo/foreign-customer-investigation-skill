@@ -4,6 +4,31 @@
 
 [English README](README.md)
 
+**一个基于证据的 B2B 客户调查 Agent Skill：从公司线索，得到客户等级、一个最优先行动，以及一致的 Word / Excel / JSON 报告。**
+
+**业务价值：**让客户核验、产品匹配与开发优先级判断可以重复执行，同时保留信息缺口和交易风险。
+
+**我构建了：**调查规则、可追溯评分模型、等级限制、确定性批量排名和报告验证导出。**能力：**Python · Pydantic · 业务逻辑 · 证据分析 · 工作流设计 · 文档自动化。
+
+## 从输入到行动
+
+![公司名称、官网、名片或询盘 → 收集证据 → 核验公司 → 客户类型、产品匹配、采购信号和风险 → 得分、等级与优先行动 → DOCX、XLSX、JSON](docs/visuals/workflow-zh.svg)
+
+研究步骤遵循[实际 Skill 流程](.agents/skills/foreign-customer-investigation/SKILL.md)，Python 负责验证与导出。项目是可复用 Agent Skill，包含报告生成器；不是独立网页应用。
+
+## 一个完整的示例结果
+
+![虚构 Aurora 客户报告：97 分、A 级、客户类型、采购信号、匹配产品、付款不确定性、下一步和五维实际评分](docs/visuals/result-zh.svg)
+
+**完全虚构的测试示例，不是真实客户成果。** 结果卡直接使用原有 Aurora 示例：**20 + 25 + 25 + 14 + 15 − 2 = 97**。产品仍需确认参数；高分不能绕过等级限制。
+
+查看原始 [JSON](examples/chinese-user-overseas-customer/FICTIONAL_Aurora_Printworks_investigation.json)、[Word 报告](examples/chinese-user-overseas-customer/FICTIONAL_Aurora_Printworks_客户背景调查报告.docx)或 [Excel 工作簿](examples/chinese-user-overseas-customer/FICTIONAL_Aurora_Printworks_客户背景调查数据.xlsx)。英文叙述来自同一套现有示例生成器。[视觉来源与重新生成](docs/visuals/SOURCES.md)。
+
+<details>
+<summary>完整功能、安装、评分规则与使用参考</summary>
+
+## 适用范围与边界
+
 `foreign-customer-investigation` 是一个可复用的 Agent Skill，用于基于公开证据开展 B2B 客户背景调查、印刷行业产品匹配、采购潜力评分和开发优先级排序。
 
 虽然名称保留 `foreign-customer-investigation`，但它同时适用于：
@@ -465,3 +490,5 @@ pytest -q
 ## License
 
 [MIT License](LICENSE)
+
+</details>
