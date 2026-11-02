@@ -8,7 +8,7 @@
 
 **Business value:** make prospect qualification and product matching repeatable, while keeping missing evidence and transaction risks visible.
 
-**What I built:** research instructions, an auditable scoring model, grade safeguards, deterministic batch ranking, and validated report generators. **Skills:** Python · Pydantic · business rules · evidence analysis · workflow design · document automation.
+**What it includes:** research instructions, an auditable scoring model, grade safeguards, deterministic batch ranking, and validated report generators. **Skills:** Python · Pydantic · business rules · evidence analysis · workflow design · document automation.
 
 ## From input to action
 
@@ -488,3 +488,5 @@ Tests cover A/B/C/D cases, simplified-mode triggers, grade caps, score bounds, r
 [MIT License](LICENSE)
 
 </details>
+
+Independent project by Haoqi Luo. I chose the question, checked the data and results, and decided the conclusions. AI coding tools helped with the implementation.
