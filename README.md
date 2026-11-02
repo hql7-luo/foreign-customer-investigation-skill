@@ -8,7 +8,7 @@
 
 **Business value:** make prospect qualification and product matching repeatable, while keeping missing evidence and transaction risks visible.
 
-**What it includes:** research instructions, an auditable scoring model, grade safeguards, deterministic batch ranking, and validated report generators. **Skills:** Python · Pydantic · business rules · evidence analysis · workflow design · document automation.
+**What it includes:** research instructions, an auditable scoring model, grade safeguards, deterministic batch ranking, and validated report generators. **Tools used:** Python · Pydantic. **Focus:** business rules · evidence analysis · workflow design · document automation.
 
 ## From input to action
 
